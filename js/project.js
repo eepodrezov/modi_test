@@ -4,8 +4,9 @@ import { renderProject } from './project-render-functions/renders.js';
 
 (async () => {
   const privateProjectQueryParamPrefix = '?privateId='
+  const urlSearchParam = window.location.search || privateProjectQueryParamPrefix + PRIVATE_PROJECT_CONST_CODE
   //todo заменить на реальный
-  const requestLink = MODI_API_URL + PRIVATE_PROJECT_URL + privateProjectQueryParamPrefix + PRIVATE_PROJECT_CONST_CODE
+  const requestLink = MODI_API_URL + PRIVATE_PROJECT_URL + urlSearchParam
   const project = await getDataApi.getData(requestLink)
 
   renderProject(project);
